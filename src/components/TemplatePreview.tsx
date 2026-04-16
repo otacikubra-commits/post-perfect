@@ -20,6 +20,8 @@ const templates = [
   { name: "Lüks Koyu", Component: TemplateLuxuryDark },
 ];
 
+const SCALE = 0.3;
+
 const TemplatePreview = ({ data, text }: Props) => {
   const refs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -65,20 +67,31 @@ const TemplatePreview = ({ data, text }: Props) => {
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {templates.map(({ name, Component }, i) => (
-          <div key={i} className="group space-y-3">
-            <div className="overflow-hidden rounded-lg border border-border shadow-sm">
-              <div style={{ transform: "scale(0.3)", transformOrigin: "top left", width: 1080, height: 1080 }}>
-                <div className="relative" style={{ width: 1080, height: 1080 }}>
-                  <div ref={(el) => { refs.current[i] = el; }}>
-                    <Component data={data} text={text} />
-                  </div>
+          <div key={i} className="space-y-3">
+            <div
+              className="overflow-hidden rounded-lg border border-border shadow-sm"
+              style={{
+                width: "100%",
+                aspectRatio: "1/1",
+                position: "relative",
+              }}
+            >
+              <div
+                style={{
+                  transform: `scale(${SCALE})`,
+                  transformOrigin: "top left",
+                  width: 1080,
+                  height: 1080,
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                }}
+              >
+                <div ref={(el) => { refs.current[i] = el; }}>
+                  <Component data={data} text={text} />
                 </div>
               </div>
             </div>
-            <div
-              className="overflow-hidden rounded-lg"
-              style={{ height: `calc(1080px * 0.3)`, marginTop: `-${1080 * 0.7}px`, position: "relative", pointerEvents: "none" }}
-            />
             <div className="flex items-center justify-between">
               <span className="font-body text-sm font-medium text-muted-foreground">
                 {name}
