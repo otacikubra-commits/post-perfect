@@ -128,6 +128,75 @@ const PropertyForm = ({ data, onChange }: PropertyFormProps) => {
           </div>
         </div>
       </div>
+
+      <div className="mt-6 border-t border-border pt-5">
+        <h3 className="font-display text-lg font-semibold text-foreground mb-4">
+          Emlakçı Bilgileri
+        </h3>
+
+        <div className="space-y-4">
+          <div>
+            <Label className="font-body text-sm">Logo</Label>
+            <div className="mt-1">
+              {data.agentLogo ? (
+                <div className="flex items-center gap-3">
+                  <img
+                    src={data.agentLogo}
+                    alt="Logo"
+                    className="h-12 w-12 rounded-lg object-contain border border-border"
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() => update({ agentLogo: "" })}
+                  >
+                    <X className="h-3 w-3 mr-1" />
+                    Kaldır
+                  </Button>
+                </div>
+              ) : (
+                <label className="flex h-16 cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-border bg-secondary/30 text-sm text-muted-foreground hover:border-primary/50 transition-colors">
+                  Logo Yükle (Opsiyonel)
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (!file) return;
+                      const reader = new FileReader();
+                      reader.onload = () => update({ agentLogo: reader.result as string });
+                      reader.readAsDataURL(file);
+                    }}
+                  />
+                </label>
+              )}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <Label className="font-body text-sm">İsim</Label>
+              <Input
+                placeholder="Ör: Ahmet Yılmaz"
+                value={data.agentName}
+                onChange={(e) => update({ agentName: e.target.value })}
+                className="mt-1"
+              />
+            </div>
+            <div>
+              <Label className="font-body text-sm">Telefon</Label>
+              <Input
+                placeholder="Ör: 0532 123 4567"
+                value={data.agentPhone}
+                onChange={(e) => update({ agentPhone: e.target.value })}
+                className="mt-1"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -65,9 +65,18 @@ const TemplateCarousel = ({ data, text }: Props) => {
               {data.price}
             </p>
           </div>
-          <p style={{ fontSize: 15 }} className="max-w-[280px] text-right text-neutral-500">
-            {text.cta}
-          </p>
+          <div className="flex items-center gap-3">
+            {data.agentLogo && (
+              <img src={data.agentLogo} alt="" className="h-10 w-10 rounded-full object-contain border border-neutral-200" crossOrigin="anonymous" />
+            )}
+            <div className="text-right">
+              {data.agentName && <p style={{ fontSize: 15 }} className="font-semibold text-black">{data.agentName}</p>}
+              {data.agentPhone && <p style={{ fontSize: 13 }} className="text-neutral-500">{data.agentPhone}</p>}
+              {!data.agentName && !data.agentPhone && (
+                <p style={{ fontSize: 15 }} className="max-w-[280px] text-neutral-500">{text.cta}</p>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>

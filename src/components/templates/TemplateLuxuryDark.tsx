@@ -110,9 +110,18 @@ const TemplateLuxuryDark = ({ data, text }: Props) => {
           className="mt-5"
           style={{ height: 1, background: "linear-gradient(90deg, transparent, #D4A843, transparent)" }}
         />
-        <p style={{ fontSize: 14, color: "#D4A843" }} className="mt-3 text-center">
-          {text.cta}
-        </p>
+        <div className="mt-3 flex items-center justify-center gap-3">
+          {data.agentLogo && (
+            <img src={data.agentLogo} alt="" className="h-9 w-9 rounded-full object-contain" crossOrigin="anonymous" />
+          )}
+          <div className="text-center">
+            {data.agentName && <p style={{ fontSize: 14, color: "#D4A843" }}>{data.agentName}</p>}
+            {data.agentPhone && <p style={{ fontSize: 13, color: "rgba(255,255,255,0.5)" }}>{data.agentPhone}</p>}
+            {!data.agentName && !data.agentPhone && (
+              <p style={{ fontSize: 14, color: "#D4A843" }}>{text.cta}</p>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
