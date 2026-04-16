@@ -75,12 +75,18 @@ const TemplateBoldSales = ({ data, text }: Props) => {
             </span>
           ))}
         </div>
-        <p
-          style={{ fontSize: 18 }}
-          className="mt-6 text-center font-medium text-amber-300"
-        >
-          {text.cta}
-        </p>
+        <div className="mt-6 flex items-center justify-center gap-4">
+          {data.agentLogo && (
+            <img src={data.agentLogo} alt="" className="h-10 w-10 rounded-full object-contain" crossOrigin="anonymous" />
+          )}
+          <div className="text-center">
+            {data.agentName && <p style={{ fontSize: 16 }} className="font-semibold text-white">{data.agentName}</p>}
+            {data.agentPhone && <p style={{ fontSize: 14 }} className="text-amber-300">{data.agentPhone}</p>}
+            {!data.agentName && !data.agentPhone && (
+              <p style={{ fontSize: 18 }} className="font-medium text-amber-300">{text.cta}</p>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

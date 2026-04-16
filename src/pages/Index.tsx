@@ -15,6 +15,9 @@ const INITIAL_DATA: PropertyData = {
   propertyType: "sale",
   features: [],
   images: [],
+  agentName: "",
+  agentPhone: "",
+  agentLogo: "",
 };
 
 const STEPS = ["Görseller", "Bilgiler", "Tasarımlar"];

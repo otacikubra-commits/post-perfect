@@ -67,10 +67,22 @@ const TemplateMinimalModern = ({ data, text }: Props) => {
               {data.price}
             </p>
           </div>
-          <p style={{ fontSize: 16 }} className="text-white/60">
-            📍 {data.location}
-          </p>
+          <div className="flex items-center gap-3">
+            {data.agentLogo && (
+              <img src={data.agentLogo} alt="" className="h-10 w-10 rounded-full object-contain" crossOrigin="anonymous" />
+            )}
+            <div className="text-right">
+              {data.agentName && <p style={{ fontSize: 14 }} className="font-semibold text-white">{data.agentName}</p>}
+              {data.agentPhone && <p style={{ fontSize: 13 }} className="text-white/60">{data.agentPhone}</p>}
+              {!data.agentName && !data.agentPhone && (
+                <p style={{ fontSize: 16 }} className="text-white/60">📍 {data.location}</p>
+              )}
+            </div>
+          </div>
         </div>
+        {(data.agentName || data.agentPhone) && (
+          <p style={{ fontSize: 14 }} className="mt-2 text-white/50">📍 {data.location}</p>
+        )}
       </div>
     </div>
   );
