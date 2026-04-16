@@ -7,6 +7,9 @@ import TemplateMinimalModern from "./templates/TemplateMinimalModern";
 import TemplateBoldSales from "./templates/TemplateBoldSales";
 import TemplateCarousel from "./templates/TemplateCarousel";
 import TemplateLuxuryDark from "./templates/TemplateLuxuryDark";
+import TemplateClassicBlue from "./templates/TemplateClassicBlue";
+import TemplateMultiImage from "./templates/TemplateMultiImage";
+import TemplateGeoBold from "./templates/TemplateGeoBold";
 
 interface Props {
   data: PropertyData;
@@ -18,6 +21,9 @@ const templates = [
   { name: "Satış Odaklı", Component: TemplateBoldSales },
   { name: "Karousel", Component: TemplateCarousel },
   { name: "Lüks Koyu", Component: TemplateLuxuryDark },
+  { name: "Klasik Mavi", Component: TemplateClassicBlue },
+  { name: "Çoklu Görsel", Component: TemplateMultiImage },
+  { name: "Geometrik", Component: TemplateGeoBold },
 ];
 
 const SCALE = 0.3;
