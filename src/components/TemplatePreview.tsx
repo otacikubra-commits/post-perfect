@@ -23,13 +23,15 @@ interface Props {
 }
 
 const socialTemplates = [
-  { name: "Minimal Modern", Component: TemplateMinimalModern },
-  { name: "Satış Odaklı", Component: TemplateBoldSales },
-  { name: "Karousel", Component: TemplateCarousel },
-  { name: "Lüks Koyu", Component: TemplateLuxuryDark },
-  { name: "Klasik Mavi", Component: TemplateClassicBlue },
-  { name: "Çoklu Görsel", Component: TemplateMultiImage },
-  { name: "Geometrik", Component: TemplateGeoBold },
+  { name: "Minimal Modern", Component: TemplateMinimalModern, width: 1080, height: 1080 },
+  { name: "Satış Odaklı", Component: TemplateBoldSales, width: 1080, height: 1080 },
+  { name: "Karousel", Component: TemplateCarousel, width: 1080, height: 1080 },
+  { name: "Lüks Koyu", Component: TemplateLuxuryDark, width: 1080, height: 1080 },
+  { name: "Klasik Mavi", Component: TemplateClassicBlue, width: 1080, height: 1080 },
+  { name: "Çoklu Görsel", Component: TemplateMultiImage, width: 1080, height: 1080 },
+  { name: "Geometrik", Component: TemplateGeoBold, width: 1080, height: 1080 },
+  { name: "Navy Gold", Component: TemplateNavyGold, width: 1080, height: 1350 },
+  { name: "Emlakçı Vitrin", Component: TemplateAgentShowcase, width: 1080, height: 1350 },
 ];
 
 const businessCardTemplates = [
