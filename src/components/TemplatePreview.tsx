@@ -50,12 +50,31 @@ const TemplatePreview = ({ data, text }: Props) => {
     height: number
   ) => {
     if (!ref) return;
+
+    // Find the scaled parent and temporarily remove transform
+    const scaledParent = ref.parentElement;
+    const originalTransform = scaledParent?.style.transform || "";
+    const originalPosition = scaledParent?.style.position || "";
+    if (scaledParent) {
+      scaledParent.style.transform = "none";
+      scaledParent.style.position = "static";
+    }
+
     const canvas = await html2canvas(ref, {
-      scale: 1,
+      scale: 2,
       useCORS: true,
       width,
       height,
+      windowWidth: width,
+      windowHeight: height,
     });
+
+    // Restore transform
+    if (scaledParent) {
+      scaledParent.style.transform = originalTransform;
+      scaledParent.style.position = originalPosition;
+    }
+
     const link = document.createElement("a");
     link.download = `emlak-${name}.png`;
     link.href = canvas.toDataURL("image/png");
