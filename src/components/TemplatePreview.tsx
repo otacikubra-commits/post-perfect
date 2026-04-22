@@ -10,6 +10,10 @@ import TemplateLuxuryDark from "./templates/TemplateLuxuryDark";
 import TemplateClassicBlue from "./templates/TemplateClassicBlue";
 import TemplateMultiImage from "./templates/TemplateMultiImage";
 import TemplateGeoBold from "./templates/TemplateGeoBold";
+import BusinessCardRedDiagonal from "./templates/BusinessCardRedDiagonal";
+import BusinessCardGoldGeometric from "./templates/BusinessCardGoldGeometric";
+import BusinessCardBlueCurved from "./templates/BusinessCardBlueCurved";
+import BusinessCardRedOrange from "./templates/BusinessCardRedOrange";
 
 interface Props {
   data: PropertyData;
@@ -24,6 +28,13 @@ const templates = [
   { name: "Klasik Mavi", Component: TemplateClassicBlue },
   { name: "Çoklu Görsel", Component: TemplateMultiImage },
   { name: "Geometrik", Component: TemplateGeoBold },
+];
+
+const businessCards = [
+  { name: "Kırmızı Diagonal", Component: BusinessCardRedDiagonal },
+  { name: "Altın Geometrik", Component: BusinessCardGoldGeometric },
+  { name: "Mavi Eğri", Component: BusinessCardBlueCurved },
+  { name: "Kırmızı-Turuncu", Component: BusinessCardRedOrange },
 ];
 
 const SCALE = 0.3;

@@ -17,6 +17,8 @@ const INITIAL_DATA: PropertyData = {
   images: [],
   agentName: "",
   agentPhone: "",
+  agentEmail: "",
+  agentAddress: "",
   agentLogo: "",
 };
 

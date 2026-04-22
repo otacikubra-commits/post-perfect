@@ -195,6 +195,26 @@ const PropertyForm = ({ data, onChange }: PropertyFormProps) => {
               />
             </div>
           </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <Label className="font-body text-sm">E-posta</Label>
+              <Input
+                placeholder="Ör: info@emlak.com"
+                value={data.agentEmail}
+                onChange={(e) => update({ agentEmail: e.target.value })}
+                className="mt-1"
+              />
+            </div>
+            <div>
+              <Label className="font-body text-sm">Adres</Label>
+              <Input
+                placeholder="Ör: Kadıköy / İstanbul"
+                value={data.agentAddress}
+                onChange={(e) => update({ agentAddress: e.target.value })}
+                className="mt-1"
+              />
+            </div>
         </div>
       </div>
     </div>
