@@ -10,10 +10,6 @@ import TemplateLuxuryDark from "./templates/TemplateLuxuryDark";
 import TemplateClassicBlue from "./templates/TemplateClassicBlue";
 import TemplateMultiImage from "./templates/TemplateMultiImage";
 import TemplateGeoBold from "./templates/TemplateGeoBold";
-import BusinessCardRedDiagonal from "./templates/BusinessCardRedDiagonal";
-import BusinessCardGoldGeometric from "./templates/BusinessCardGoldGeometric";
-import BusinessCardBlueCurved from "./templates/BusinessCardBlueCurved";
-import BusinessCardRedOrange from "./templates/BusinessCardRedOrange";
 
 interface Props {
   data: PropertyData;
@@ -30,20 +26,10 @@ const templates = [
   { name: "Geometrik", Component: TemplateGeoBold },
 ];
 
-const businessCards = [
-  { name: "Kırmızı Diagonal", Component: BusinessCardRedDiagonal },
-  { name: "Altın Geometrik", Component: BusinessCardGoldGeometric },
-  { name: "Mavi Eğri", Component: BusinessCardBlueCurved },
-  { name: "Kırmızı-Turuncu", Component: BusinessCardRedOrange },
-];
-
 const SCALE = 0.3;
-const CARD_SCALE = 0.3;
 
 const TemplatePreview = ({ data, text }: Props) => {
   const refs = useRef<(HTMLDivElement | null)[]>([]);
-
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const downloadTemplate = useCallback(async (index: number) => {
     const el = refs.current[index];
@@ -56,21 +42,6 @@ const TemplatePreview = ({ data, text }: Props) => {
     });
     const link = document.createElement("a");
     link.download = `emlak-tasarim-${index + 1}.png`;
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-  }, []);
-
-  const downloadCard = useCallback(async (index: number) => {
-    const el = cardRefs.current[index];
-    if (!el) return;
-    const canvas = await html2canvas(el, {
-      scale: 1,
-      useCORS: true,
-      width: 1050,
-      height: 600,
-    });
-    const link = document.createElement("a");
-    link.download = `kartvizit-${index + 1}.png`;
     link.href = canvas.toDataURL("image/png");
     link.click();
   }, []);
@@ -125,58 +96,8 @@ const TemplatePreview = ({ data, text }: Props) => {
                 <div ref={(el) => { refs.current[i] = el; }}>
                   <Component data={data} text={text} />
                 </div>
-      </div>
-
-      {/* Business Cards Section */}
-      <div className="mt-10 border-t border-border pt-8">
-        <h2 className="font-display text-2xl font-semibold text-foreground mb-6">
-          Kartvizit Tasarımları
-        </h2>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {businessCards.map(({ name, Component }, i) => (
-            <div key={i} className="space-y-3">
-              <div
-                className="overflow-hidden rounded-lg border border-border shadow-sm"
-                style={{
-                  width: "100%",
-                  aspectRatio: "1050/600",
-                  position: "relative",
-                }}
-              >
-                <div
-                  style={{
-                    transform: `scale(${CARD_SCALE})`,
-                    transformOrigin: "top left",
-                    width: 1050,
-                    height: 600,
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                  }}
-                >
-                  <div ref={(el) => { cardRefs.current[i] = el; }}>
-                    <Component data={data} />
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="font-body text-sm font-medium text-muted-foreground">
-                  {name}
-                </span>
-                <Button
-                  size="sm"
-                  onClick={() => downloadCard(i)}
-                  className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
-                >
-                  <Download className="h-3.5 w-3.5" />
-                  PNG İndir
-                </Button>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
             <div className="flex items-center justify-between">
               <span className="font-body text-sm font-medium text-muted-foreground">
                 {name}
