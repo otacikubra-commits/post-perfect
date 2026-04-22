@@ -216,6 +216,7 @@ const PropertyForm = ({ data, onChange }: PropertyFormProps) => {
               />
             </div>
           </div>
+        </div>
       </div>
     </div>
   );
