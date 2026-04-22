@@ -42,6 +42,8 @@ const SCALE = 0.3;
 const TemplatePreview = ({ data, text }: Props) => {
   const refs = useRef<(HTMLDivElement | null)[]>([]);
 
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   const downloadTemplate = useCallback(async (index: number) => {
     const el = refs.current[index];
     if (!el) return;
@@ -53,6 +55,21 @@ const TemplatePreview = ({ data, text }: Props) => {
     });
     const link = document.createElement("a");
     link.download = `emlak-tasarim-${index + 1}.png`;
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  }, []);
+
+  const downloadCard = useCallback(async (index: number) => {
+    const el = cardRefs.current[index];
+    if (!el) return;
+    const canvas = await html2canvas(el, {
+      scale: 1,
+      useCORS: true,
+      width: 1050,
+      height: 600,
+    });
+    const link = document.createElement("a");
+    link.download = `kartvizit-${index + 1}.png`;
     link.href = canvas.toDataURL("image/png");
     link.click();
   }, []);
