@@ -118,13 +118,13 @@ const TemplatePreview = ({ data, text }: Props) => {
 
         <TabsContent value="social">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 mt-4">
-            {socialTemplates.map(({ name, Component }, i) => (
+            {socialTemplates.map(({ name, Component, width, height }, i) => (
               <div key={i} className="space-y-3">
                 <div
                   className="overflow-hidden rounded-lg border border-border shadow-sm"
                   style={{
                     width: "100%",
-                    aspectRatio: "1/1",
+                    aspectRatio: `${width}/${height}`,
                     position: "relative",
                   }}
                 >
@@ -132,8 +132,8 @@ const TemplatePreview = ({ data, text }: Props) => {
                     style={{
                       transform: `scale(${SOCIAL_SCALE})`,
                       transformOrigin: "top left",
-                      width: 1080,
-                      height: 1080,
+                      width,
+                      height,
                       position: "absolute",
                       top: 0,
                       left: 0,
@@ -150,7 +150,7 @@ const TemplatePreview = ({ data, text }: Props) => {
                   </span>
                   <Button
                     size="sm"
-                    onClick={() => downloadTemplate(socialRefs.current[i], `sosyal-${i + 1}`, 1080, 1080)}
+                    onClick={() => downloadTemplate(socialRefs.current[i], `sosyal-${i + 1}`, width, height)}
                     className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
                   >
                     <Download className="h-3.5 w-3.5" />
