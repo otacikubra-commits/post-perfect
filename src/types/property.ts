@@ -7,6 +7,8 @@ export interface PropertyData {
   images: string[]; // base64 data URLs
   agentName: string;
   agentPhone: string;
+  agentEmail: string;
+  agentAddress: string;
   agentLogo: string; // base64 data URL
 }
 
