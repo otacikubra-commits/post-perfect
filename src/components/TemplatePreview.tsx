@@ -11,6 +11,8 @@ import TemplateLuxuryDark from "./templates/TemplateLuxuryDark";
 import TemplateClassicBlue from "./templates/TemplateClassicBlue";
 import TemplateMultiImage from "./templates/TemplateMultiImage";
 import TemplateGeoBold from "./templates/TemplateGeoBold";
+import TemplateNavyGold from "./templates/TemplateNavyGold";
+import TemplateAgentShowcase from "./templates/TemplateAgentShowcase";
 import BusinessCardModern from "./templates/BusinessCardModern";
 import BusinessCardElegant from "./templates/BusinessCardElegant";
 import BusinessCardBold from "./templates/BusinessCardBold";
@@ -21,13 +23,15 @@ interface Props {
 }
 
 const socialTemplates = [
-  { name: "Minimal Modern", Component: TemplateMinimalModern },
-  { name: "Satış Odaklı", Component: TemplateBoldSales },
-  { name: "Karousel", Component: TemplateCarousel },
-  { name: "Lüks Koyu", Component: TemplateLuxuryDark },
-  { name: "Klasik Mavi", Component: TemplateClassicBlue },
-  { name: "Çoklu Görsel", Component: TemplateMultiImage },
-  { name: "Geometrik", Component: TemplateGeoBold },
+  { name: "Minimal Modern", Component: TemplateMinimalModern, width: 1080, height: 1080 },
+  { name: "Satış Odaklı", Component: TemplateBoldSales, width: 1080, height: 1080 },
+  { name: "Karousel", Component: TemplateCarousel, width: 1080, height: 1080 },
+  { name: "Lüks Koyu", Component: TemplateLuxuryDark, width: 1080, height: 1080 },
+  { name: "Klasik Mavi", Component: TemplateClassicBlue, width: 1080, height: 1080 },
+  { name: "Çoklu Görsel", Component: TemplateMultiImage, width: 1080, height: 1080 },
+  { name: "Geometrik", Component: TemplateGeoBold, width: 1080, height: 1080 },
+  { name: "Navy Gold", Component: TemplateNavyGold, width: 1080, height: 1350 },
+  { name: "Emlakçı Vitrin", Component: TemplateAgentShowcase, width: 1080, height: 1350 },
 ];
 
 const businessCardTemplates = [
@@ -114,13 +118,13 @@ const TemplatePreview = ({ data, text }: Props) => {
 
         <TabsContent value="social">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 mt-4">
-            {socialTemplates.map(({ name, Component }, i) => (
+            {socialTemplates.map(({ name, Component, width, height }, i) => (
               <div key={i} className="space-y-3">
                 <div
                   className="overflow-hidden rounded-lg border border-border shadow-sm"
                   style={{
                     width: "100%",
-                    aspectRatio: "1/1",
+                    aspectRatio: `${width}/${height}`,
                     position: "relative",
                   }}
                 >
@@ -128,8 +132,8 @@ const TemplatePreview = ({ data, text }: Props) => {
                     style={{
                       transform: `scale(${SOCIAL_SCALE})`,
                       transformOrigin: "top left",
-                      width: 1080,
-                      height: 1080,
+                      width,
+                      height,
                       position: "absolute",
                       top: 0,
                       left: 0,
@@ -146,7 +150,7 @@ const TemplatePreview = ({ data, text }: Props) => {
                   </span>
                   <Button
                     size="sm"
-                    onClick={() => downloadTemplate(socialRefs.current[i], `sosyal-${i + 1}`, 1080, 1080)}
+                    onClick={() => downloadTemplate(socialRefs.current[i], `sosyal-${i + 1}`, width, height)}
                     className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
                   >
                     <Download className="h-3.5 w-3.5" />
