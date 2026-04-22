@@ -38,6 +38,7 @@ const businessCards = [
 ];
 
 const SCALE = 0.3;
+const CARD_SCALE = 0.3;
 
 const TemplatePreview = ({ data, text }: Props) => {
   const refs = useRef<(HTMLDivElement | null)[]>([]);
