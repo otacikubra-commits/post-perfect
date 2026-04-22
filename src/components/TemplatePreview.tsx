@@ -11,6 +11,8 @@ import TemplateLuxuryDark from "./templates/TemplateLuxuryDark";
 import TemplateClassicBlue from "./templates/TemplateClassicBlue";
 import TemplateMultiImage from "./templates/TemplateMultiImage";
 import TemplateGeoBold from "./templates/TemplateGeoBold";
+import TemplateNavyGold from "./templates/TemplateNavyGold";
+import TemplateAgentShowcase from "./templates/TemplateAgentShowcase";
 import BusinessCardModern from "./templates/BusinessCardModern";
 import BusinessCardElegant from "./templates/BusinessCardElegant";
 import BusinessCardBold from "./templates/BusinessCardBold";
