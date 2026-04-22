@@ -215,7 +215,7 @@ const PropertyForm = ({ data, onChange }: PropertyFormProps) => {
                 className="mt-1"
               />
             </div>
-        </div>
+          </div>
       </div>
     </div>
   );
