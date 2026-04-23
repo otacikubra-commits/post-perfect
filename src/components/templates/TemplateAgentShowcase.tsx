@@ -5,12 +5,9 @@ interface Props {
   text: GeneratedText;
 }
 
-/**
- * Large main image top, bold red SATILIK banner across middle,
- * 3 small images row below, beige footer with agent info
- */
-const TemplateAgentShowcase = ({ data, text }: Props) => {
+const TemplateAgentShowcase = ({ data }: Props) => {
   const typeLabel = data.propertyType === "sale" ? "SATILIK" : "KİRALIK";
+  const features = data.features?.slice(0, 3) || [];
 
   return (
     <div
@@ -20,82 +17,147 @@ const TemplateAgentShowcase = ({ data, text }: Props) => {
       {/* Background */}
       <div className="absolute inset-0" style={{ background: "hsl(30 15% 88%)" }} />
 
-      {/* Main large image */}
-      <div className="absolute left-0 right-0 top-0" style={{ height: 680 }}>
+      {/* HERO IMAGE */}
+      <div className="absolute left-0 right-0 top-0" style={{ height: 620 }}>
         {data.images[0] ? (
           <img src={data.images[0]} alt="" className="h-full w-full object-cover" crossOrigin="anonymous" />
         ) : (
-          <div className="flex h-full w-full items-center justify-center" style={{ background: "hsl(30 10% 80%)" }}>
-            <span style={{ fontSize: 20, color: "hsl(30 10% 50%)" }}>Ana Görsel</span>
-          </div>
+          <div className="flex h-full w-full items-center justify-center" style={{ background: "hsl(30 10% 80%)" }} />
         )}
+        {/* Gradient overlay */}
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.5) 100%)" }}
+        />
       </div>
 
-      {/* Red banner across middle */}
+      {/* PRICE BADGE */}
+      {data.price && (
+        <div
+          className="absolute flex items-center justify-center"
+          style={{ top: 30, right: 30, zIndex: 3 }}
+        >
+          <div
+            className="rounded-xl px-6 py-3"
+            style={{ background: "rgba(0,0,0,0.7)", backdropFilter: "blur(8px)" }}
+          >
+            <span style={{ fontSize: 32, fontWeight: 800, color: "white" }}>
+              {data.price}
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* RED BANNER */}
       <div
         className="absolute left-0 right-0 flex items-center justify-center"
-        style={{ top: 620, height: 100, background: "hsl(0 72% 45%)", zIndex: 2 }}
+        style={{ top: 580, height: 90, zIndex: 2 }}
       >
-        <h1
-          style={{ fontSize: 72, letterSpacing: 16, color: "white" }}
-          className="font-black uppercase"
+        <div
+          className="flex items-center justify-center px-16 py-3"
+          style={{ background: "hsl(0 72% 45%)", borderRadius: 6 }}
         >
-          {typeLabel}
-        </h1>
+          <h1
+            style={{ fontSize: 56, letterSpacing: 14, color: "white" }}
+            className="font-black uppercase"
+          >
+            {typeLabel}
+          </h1>
+        </div>
       </div>
 
-      {/* 3 small images row */}
+      {/* FEATURE CHIPS */}
+      {features.length > 0 && (
+        <div
+          className="absolute left-0 right-0 flex items-center justify-center gap-3"
+          style={{ top: 680, zIndex: 2 }}
+        >
+          {features.map((f, i) => (
+            <div
+              key={i}
+              className="rounded-full px-5 py-2"
+              style={{
+                background: "white",
+                border: "1px solid hsl(0 0% 85%)",
+                fontSize: 16,
+                fontWeight: 600,
+                color: "hsl(0 0% 25%)",
+              }}
+            >
+              {f}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* GRID - 3 small images */}
       <div
-        className="absolute left-0 right-0 flex gap-[4px]"
-        style={{ top: 720, height: 260 }}
+        className="absolute left-6 right-6 flex gap-2"
+        style={{ top: 730, height: 240 }}
       >
         {[0, 1, 2].map((idx) => (
-          <div key={idx} className="h-full flex-1 overflow-hidden">
+          <div key={idx} className="h-full flex-1 overflow-hidden rounded-lg">
             {data.images[idx] ? (
               <img src={data.images[idx]} alt="" className="h-full w-full object-cover" crossOrigin="anonymous" />
             ) : (
               <div
-                className="flex h-full w-full items-center justify-center"
+                className="h-full w-full"
                 style={{ background: idx % 2 === 0 ? "hsl(30 10% 82%)" : "hsl(30 10% 78%)" }}
-              >
-                <span style={{ fontSize: 14, color: "hsl(30 10% 50%)" }}>Görsel {idx + 1}</span>
-              </div>
+              />
             )}
           </div>
         ))}
       </div>
 
-      {/* Beige footer with agent info */}
+      {/* AGENT CARD */}
       <div
-        className="absolute bottom-0 left-0 right-0 flex flex-col items-center justify-center"
-        style={{ top: 980, background: "hsl(30 15% 88%)" }}
+        className="absolute bottom-0 left-0 right-0 flex items-center justify-center"
+        style={{ top: 990, background: "hsl(30 15% 88%)" }}
       >
-        {/* White card */}
         <div
-          className="flex flex-col items-center rounded-2xl px-12 py-6"
-          style={{ background: "white", boxShadow: "0 2px 20px rgba(0,0,0,0.06)", minWidth: 600 }}
+          className="flex flex-col items-center rounded-2xl px-12 py-5"
+          style={{ background: "white", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", minWidth: 600 }}
         >
+          {/* Logo */}
           {data.agentLogo && (
             <img
               src={data.agentLogo}
               alt=""
               className="mb-3 object-contain"
-              style={{ height: 50, maxWidth: 200 }}
+              style={{ height: 48, maxWidth: 200 }}
               crossOrigin="anonymous"
             />
           )}
+
+          {/* Name */}
           <h2
-            style={{ fontSize: 36, color: "hsl(220 20% 20%)" }}
-            className="mb-2 font-black uppercase"
+            style={{ fontSize: 34, color: "hsl(220 20% 20%)" }}
+            className="mb-1 font-black uppercase"
           >
             {data.agentName || "Emlak Ofisi"}
           </h2>
+
+          {/* Phone */}
           {data.agentPhone && (
-            <p style={{ fontSize: 30, color: "hsl(0 72% 45%)" }} className="mb-2 font-bold">
-              📞 {data.agentPhone}
+            <p style={{ fontSize: 26, color: "hsl(0 72% 45%)" }} className="mb-3 font-bold">
+              {data.agentPhone}
             </p>
           )}
-          <p style={{ fontSize: 18, color: "hsl(220 10% 40%)" }}>
+
+          {/* CTA BUTTON */}
+          <div className="mb-3">
+            <div
+              className="rounded-full px-10 py-2"
+              style={{ background: "hsl(0 72% 45%)", cursor: "pointer" }}
+            >
+              <span style={{ fontSize: 18, fontWeight: 700, color: "white", letterSpacing: 3 }}>
+                HEMEN ARA
+              </span>
+            </div>
+          </div>
+
+          {/* Location */}
+          <p style={{ fontSize: 16, color: "hsl(220 10% 45%)" }}>
             📍 {data.location}
           </p>
         </div>
