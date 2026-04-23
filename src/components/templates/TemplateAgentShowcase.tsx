@@ -1,3 +1,4 @@
+import React from "react";
 import { PropertyData, GeneratedText } from "@/types/property";
 
 interface Props {
@@ -5,9 +6,13 @@ interface Props {
   text: GeneratedText;
 }
 
-const TemplateAgentShowcase = ({ data }: Props) => {
+const TemplateAgentShowcase: React.FC<Props> = ({ data }) => {
   const typeLabel = data.propertyType === "sale" ? "SATILIK" : "KİRALIK";
-  const features = data.features?.slice(0, 3) || [];
+
+  const features =
+    data.features?.slice(0, 3).map((f: any) =>
+      typeof f === "string" ? f : f?.label || ""
+    ) || [];
 
   return (
     <div
@@ -19,19 +24,30 @@ const TemplateAgentShowcase = ({ data }: Props) => {
 
       {/* HERO IMAGE */}
       <div className="absolute left-0 right-0 top-0" style={{ height: 620 }}>
-        {data.images[0] ? (
-          <img src={data.images[0]} alt="" className="h-full w-full object-cover" crossOrigin="anonymous" />
+        {data.images?.[0] ? (
+          <img
+            src={data.images[0]}
+            alt=""
+            className="h-full w-full object-cover"
+            crossOrigin="anonymous"
+          />
         ) : (
-          <div className="flex h-full w-full items-center justify-center" style={{ background: "hsl(30 10% 80%)" }} />
+          <div
+            className="flex h-full w-full items-center justify-center"
+            style={{ background: "hsl(30 10% 80%)" }}
+          >
+            <span style={{ fontSize: 20, color: "hsl(30 10% 50%)" }}>Görsel</span>
+          </div>
         )}
-        {/* Gradient overlay */}
+
+        {/* Gradient */}
         <div
           className="absolute inset-0"
           style={{ background: "linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.5) 100%)" }}
         />
       </div>
 
-      {/* PRICE BADGE */}
+      {/* PRICE */}
       {data.price && (
         <div
           className="absolute flex items-center justify-center"
@@ -48,10 +64,34 @@ const TemplateAgentShowcase = ({ data }: Props) => {
         </div>
       )}
 
+      {/* FEATURE CHIPS */}
+      {features.length > 0 && (
+        <div
+          className="absolute left-0 right-0 flex items-center justify-center gap-3"
+          style={{ top: 560, zIndex: 3 }}
+        >
+          {features.map((f: string, i: number) => (
+            <div
+              key={i}
+              className="rounded-full px-5 py-2"
+              style={{
+                background: "rgba(255,255,255,0.9)",
+                border: "1px solid hsl(0 0% 85%)",
+                fontSize: 16,
+                fontWeight: 600,
+                color: "hsl(0 0% 25%)",
+              }}
+            >
+              {f}
+            </div>
+          ))}
+        </div>
+      )}
+
       {/* RED BANNER */}
       <div
         className="absolute left-0 right-0 flex items-center justify-center"
-        style={{ top: 580, height: 90, zIndex: 2 }}
+        style={{ top: 610, height: 90, zIndex: 2 }}
       >
         <div
           className="flex items-center justify-center px-16 py-3"
@@ -66,44 +106,27 @@ const TemplateAgentShowcase = ({ data }: Props) => {
         </div>
       </div>
 
-      {/* FEATURE CHIPS */}
-      {features.length > 0 && (
-        <div
-          className="absolute left-0 right-0 flex items-center justify-center gap-3"
-          style={{ top: 680, zIndex: 2 }}
-        >
-          {features.map((f, i) => (
-            <div
-              key={i}
-              className="rounded-full px-5 py-2"
-              style={{
-                background: "white",
-                border: "1px solid hsl(0 0% 85%)",
-                fontSize: 16,
-                fontWeight: 600,
-                color: "hsl(0 0% 25%)",
-              }}
-            >
-              {f}
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* GRID - 3 small images */}
+      {/* GRID IMAGES */}
       <div
         className="absolute left-6 right-6 flex gap-2"
-        style={{ top: 730, height: 240 }}
+        style={{ top: 720, height: 240 }}
       >
-        {[0, 1, 2].map((idx) => (
+        {[1, 2, 3].map((idx) => (
           <div key={idx} className="h-full flex-1 overflow-hidden rounded-lg">
-            {data.images[idx] ? (
-              <img src={data.images[idx]} alt="" className="h-full w-full object-cover" crossOrigin="anonymous" />
+            {data.images?.[idx] ? (
+              <img
+                src={data.images[idx]}
+                alt=""
+                className="h-full w-full object-cover"
+                crossOrigin="anonymous"
+              />
             ) : (
               <div
-                className="h-full w-full"
+                className="flex h-full w-full items-center justify-center"
                 style={{ background: idx % 2 === 0 ? "hsl(30 10% 82%)" : "hsl(30 10% 78%)" }}
-              />
+              >
+                <span style={{ fontSize: 14, color: "hsl(30 10% 50%)" }}>Görsel {idx}</span>
+              </div>
             )}
           </div>
         ))}
@@ -112,13 +135,13 @@ const TemplateAgentShowcase = ({ data }: Props) => {
       {/* AGENT CARD */}
       <div
         className="absolute bottom-0 left-0 right-0 flex items-center justify-center"
-        style={{ top: 990, background: "hsl(30 15% 88%)" }}
+        style={{ top: 980, background: "hsl(30 15% 88%)" }}
       >
         <div
           className="flex flex-col items-center rounded-2xl px-12 py-5"
           style={{ background: "white", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", minWidth: 600 }}
         >
-          {/* Logo */}
+          {/* LOGO */}
           {data.agentLogo && (
             <img
               src={data.agentLogo}
@@ -129,7 +152,7 @@ const TemplateAgentShowcase = ({ data }: Props) => {
             />
           )}
 
-          {/* Name */}
+          {/* NAME */}
           <h2
             style={{ fontSize: 34, color: "hsl(220 20% 20%)" }}
             className="mb-1 font-black uppercase"
@@ -137,18 +160,18 @@ const TemplateAgentShowcase = ({ data }: Props) => {
             {data.agentName || "Emlak Ofisi"}
           </h2>
 
-          {/* Phone */}
+          {/* PHONE */}
           {data.agentPhone && (
             <p style={{ fontSize: 26, color: "hsl(0 72% 45%)" }} className="mb-3 font-bold">
               {data.agentPhone}
             </p>
           )}
 
-          {/* CTA BUTTON */}
+          {/* CTA */}
           <div className="mb-3">
             <div
               className="rounded-full px-10 py-2"
-              style={{ background: "hsl(0 72% 45%)", cursor: "pointer" }}
+              style={{ background: "hsl(0 72% 45%)" }}
             >
               <span style={{ fontSize: 18, fontWeight: 700, color: "white", letterSpacing: 3 }}>
                 HEMEN ARA
@@ -156,10 +179,12 @@ const TemplateAgentShowcase = ({ data }: Props) => {
             </div>
           </div>
 
-          {/* Location */}
-          <p style={{ fontSize: 16, color: "hsl(220 10% 45%)" }}>
-            📍 {data.location}
-          </p>
+          {/* LOCATION */}
+          {data.location && (
+            <p style={{ fontSize: 16, color: "hsl(220 10% 45%)" }}>
+              📍 {data.location}
+            </p>
+          )}
         </div>
       </div>
     </div>
