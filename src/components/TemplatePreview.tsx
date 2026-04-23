@@ -14,6 +14,7 @@ import TemplateAgentShowcase from "./templates/TemplateAgentShowcase";
 import BusinessCardRedCurve from "./templates/BusinessCardRedCurve";
 import BusinessCardBluePhoto from "./templates/BusinessCardBluePhoto";
 import BusinessCardDarkDiamond from "./templates/BusinessCardDarkDiamond";
+import BusinessCardBlueDiagonal from "./templates/BusinessCardBlueDiagonal";
 
 interface Props {
   data: PropertyData;
@@ -34,6 +35,7 @@ const businessCardTemplates = [
   { name: "Kırmızı Eğri", Component: BusinessCardRedCurve, width: 1050, height: 600 },
   { name: "Fotoğraflı Mavi", Component: BusinessCardBluePhoto, width: 1050, height: 600 },
   { name: "Koyu Elmas", Component: BusinessCardDarkDiamond, width: 1050, height: 600 },
+  { name: "Mavi Diagonal", Component: BusinessCardBlueDiagonal, width: 1050, height: 600 },
 ];
 
 const SOCIAL_SCALE = 0.3;
