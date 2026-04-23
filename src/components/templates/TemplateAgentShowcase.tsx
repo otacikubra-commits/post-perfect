@@ -23,7 +23,7 @@ const TemplateAgentShowcase: React.FC<Props> = ({ data }) => {
       <div className="absolute inset-0" style={{ background: "hsl(30 15% 88%)" }} />
 
       {/* HERO IMAGE */}
-      <div className="absolute left-0 right-0 top-0" style={{ height: 620 }}>
+      <div className="absolute left-0 right-0 top-0" style={{ height: 640 }}>
         {data.images?.[0] ? (
           <img
             src={data.images[0]}
@@ -64,11 +64,29 @@ const TemplateAgentShowcase: React.FC<Props> = ({ data }) => {
         </div>
       )}
 
+      {/* RED BANNER */}
+      <div
+        className="absolute left-0 right-0 flex items-center justify-center"
+        style={{ top: 620, height: 90, zIndex: 2 }}
+      >
+        <div
+          className="flex items-center justify-center px-16 py-3"
+          style={{ background: "hsl(0 72% 45%)", borderRadius: 6 }}
+        >
+          <h1
+            style={{ fontSize: 52, letterSpacing: 14, color: "white" }}
+            className="font-black uppercase"
+          >
+            {typeLabel}
+          </h1>
+        </div>
+      </div>
+
       {/* FEATURE CHIPS */}
       {features.length > 0 && (
         <div
           className="absolute left-0 right-0 flex items-center justify-center gap-3"
-          style={{ top: 560, zIndex: 3 }}
+          style={{ top: 575, zIndex: 3 }}
         >
           {features.map((f: string, i: number) => (
             <div
@@ -88,31 +106,13 @@ const TemplateAgentShowcase: React.FC<Props> = ({ data }) => {
         </div>
       )}
 
-      {/* RED BANNER */}
-      <div
-        className="absolute left-0 right-0 flex items-center justify-center"
-        style={{ top: 610, height: 90, zIndex: 2 }}
-      >
-        <div
-          className="flex items-center justify-center px-16 py-3"
-          style={{ background: "hsl(0 72% 45%)", borderRadius: 6 }}
-        >
-          <h1
-            style={{ fontSize: 56, letterSpacing: 14, color: "white" }}
-            className="font-black uppercase"
-          >
-            {typeLabel}
-          </h1>
-        </div>
-      </div>
-
       {/* GRID IMAGES */}
       <div
-        className="absolute left-6 right-6 flex gap-2"
-        style={{ top: 720, height: 240 }}
+        className="absolute left-6 right-6 flex gap-3"
+        style={{ top: 730, height: 250 }}
       >
         {[1, 2, 3].map((idx) => (
-          <div key={idx} className="h-full flex-1 overflow-hidden rounded-lg">
+          <div key={idx} className="h-full flex-1 overflow-hidden rounded-xl">
             {data.images?.[idx] ? (
               <img
                 src={data.images[idx]}
@@ -135,10 +135,10 @@ const TemplateAgentShowcase: React.FC<Props> = ({ data }) => {
       {/* AGENT CARD */}
       <div
         className="absolute bottom-0 left-0 right-0 flex items-center justify-center"
-        style={{ top: 980, background: "hsl(30 15% 88%)" }}
+        style={{ top: 1000, background: "hsl(30 15% 88%)" }}
       >
         <div
-          className="flex flex-col items-center rounded-2xl px-12 py-5"
+          className="flex flex-col items-center rounded-2xl px-12 py-6"
           style={{ background: "white", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", minWidth: 600 }}
         >
           {/* LOGO */}
@@ -146,15 +146,15 @@ const TemplateAgentShowcase: React.FC<Props> = ({ data }) => {
             <img
               src={data.agentLogo}
               alt=""
-              className="mb-3 object-contain"
-              style={{ height: 48, maxWidth: 200 }}
+              className="mb-2 object-contain"
+              style={{ height: 44, maxWidth: 200 }}
               crossOrigin="anonymous"
             />
           )}
 
           {/* NAME */}
           <h2
-            style={{ fontSize: 34, color: "hsl(220 20% 20%)" }}
+            style={{ fontSize: 32, color: "hsl(220 20% 20%)" }}
             className="mb-1 font-black uppercase"
           >
             {data.agentName || "Emlak Ofisi"}
@@ -162,18 +162,18 @@ const TemplateAgentShowcase: React.FC<Props> = ({ data }) => {
 
           {/* PHONE */}
           {data.agentPhone && (
-            <p style={{ fontSize: 26, color: "hsl(0 72% 45%)" }} className="mb-3 font-bold">
+            <p style={{ fontSize: 24, color: "hsl(0 72% 45%)" }} className="mb-2 font-bold">
               {data.agentPhone}
             </p>
           )}
 
           {/* CTA */}
-          <div className="mb-3">
+          <div className="mb-2">
             <div
               className="rounded-full px-10 py-2"
               style={{ background: "hsl(0 72% 45%)" }}
             >
-              <span style={{ fontSize: 18, fontWeight: 700, color: "white", letterSpacing: 3 }}>
+              <span style={{ fontSize: 17, fontWeight: 700, color: "white", letterSpacing: 3 }}>
                 HEMEN ARA
               </span>
             </div>
@@ -181,7 +181,7 @@ const TemplateAgentShowcase: React.FC<Props> = ({ data }) => {
 
           {/* LOCATION */}
           {data.location && (
-            <p style={{ fontSize: 16, color: "hsl(220 10% 45%)" }}>
+            <p style={{ fontSize: 15, color: "hsl(220 10% 45%)" }}>
               📍 {data.location}
             </p>
           )}

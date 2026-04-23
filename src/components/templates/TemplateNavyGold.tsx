@@ -5,11 +5,6 @@ interface Props {
   text: GeneratedText;
 }
 
-/**
- * Dark navy background, gold accents, large title top,
- * property type + price badges, 3 images (1 large left + 2 stacked right),
- * bottom info bar with agent details left and features right
- */
 const TemplateNavyGold = ({ data, text }: Props) => {
   const typeLabel = data.propertyType === "sale" ? "SATILIK" : "KİRALIK";
 
@@ -63,7 +58,7 @@ const TemplateNavyGold = ({ data, text }: Props) => {
       {/* Image grid: 1 large left + 2 stacked right */}
       <div
         className="absolute flex gap-[6px]"
-        style={{ top: 310, left: 40, right: 40, height: 620 }}
+        style={{ top: 300, left: 40, right: 40, bottom: 280 }}
       >
         {/* Large left image */}
         <div className="h-full overflow-hidden" style={{ flex: "1 1 50%" }}>
@@ -101,8 +96,8 @@ const TemplateNavyGold = ({ data, text }: Props) => {
 
       {/* Bottom info bar */}
       <div
-        className="absolute bottom-[40px] left-[40px] right-[40px] flex"
-        style={{ height: 200 }}
+        className="absolute left-[40px] right-[40px] flex"
+        style={{ bottom: 46, height: 220 }}
       >
         {/* Left: Agent info */}
         <div
@@ -135,11 +130,17 @@ const TemplateNavyGold = ({ data, text }: Props) => {
           <p style={{ fontSize: 16, letterSpacing: 2, color: "white" }} className="mb-3 font-bold uppercase">
             Konut Özellikleri
           </p>
-          {data.features.slice(0, 5).map((f, i) => (
-            <p key={i} style={{ fontSize: 15, color: "rgba(255,255,255,0.9)", lineHeight: 1.6 }}>
-              {f}
+          {data.features.length > 0 ? (
+            data.features.slice(0, 5).map((f, i) => (
+              <p key={i} style={{ fontSize: 15, color: "rgba(255,255,255,0.9)", lineHeight: 1.8 }}>
+                • {f}
+              </p>
+            ))
+          ) : (
+            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)" }}>
+              {data.title} — {data.location}
             </p>
-          ))}
+          )}
         </div>
       </div>
 
