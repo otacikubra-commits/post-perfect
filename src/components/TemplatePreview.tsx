@@ -11,9 +11,9 @@ import TemplateMultiImage from "./templates/TemplateMultiImage";
 import TemplateGeoBold from "./templates/TemplateGeoBold";
 import TemplateNavyGold from "./templates/TemplateNavyGold";
 import TemplateAgentShowcase from "./templates/TemplateAgentShowcase";
-import BusinessCardModern from "./templates/BusinessCardModern";
-import BusinessCardElegant from "./templates/BusinessCardElegant";
-import BusinessCardBold from "./templates/BusinessCardBold";
+import BusinessCardRedCurve from "./templates/BusinessCardRedCurve";
+import BusinessCardBluePhoto from "./templates/BusinessCardBluePhoto";
+import BusinessCardDarkDiamond from "./templates/BusinessCardDarkDiamond";
 
 interface Props {
   data: PropertyData;
@@ -31,9 +31,9 @@ const socialTemplates = [
 ];
 
 const businessCardTemplates = [
-  { name: "Modern", Component: BusinessCardModern, width: 1080, height: 640 },
-  { name: "Elegant", Component: BusinessCardElegant, width: 1080, height: 640 },
-  { name: "Cesur", Component: BusinessCardBold, width: 1080, height: 640 },
+  { name: "Kırmızı Eğri", Component: BusinessCardRedCurve, width: 1050, height: 600 },
+  { name: "Fotoğraflı Mavi", Component: BusinessCardBluePhoto, width: 1050, height: 600 },
+  { name: "Koyu Elmas", Component: BusinessCardDarkDiamond, width: 1050, height: 600 },
 ];
 
 const SOCIAL_SCALE = 0.3;
