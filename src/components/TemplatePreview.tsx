@@ -4,8 +4,6 @@ import { Download, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PropertyData, GeneratedText } from "@/types/property";
-import TemplateMinimalModern from "./templates/TemplateMinimalModern";
-import TemplateBoldSales from "./templates/TemplateBoldSales";
 import TemplateCarousel from "./templates/TemplateCarousel";
 import TemplateLuxuryDark from "./templates/TemplateLuxuryDark";
 import TemplateClassicBlue from "./templates/TemplateClassicBlue";
@@ -23,8 +21,6 @@ interface Props {
 }
 
 const socialTemplates = [
-  { name: "Minimal Modern", Component: TemplateMinimalModern, width: 1080, height: 1080 },
-  { name: "Satış Odaklı", Component: TemplateBoldSales, width: 1080, height: 1080 },
   { name: "Karousel", Component: TemplateCarousel, width: 1080, height: 1080 },
   { name: "Lüks Koyu", Component: TemplateLuxuryDark, width: 1080, height: 1080 },
   { name: "Klasik Mavi", Component: TemplateClassicBlue, width: 1080, height: 1080 },
