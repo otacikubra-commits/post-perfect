@@ -22,9 +22,9 @@ const TemplateGeoBold = ({ data, text }: Props) => {
       <div
         className="absolute left-0 top-0 h-full"
         style={{
-          width: "40%",
+          width: "45%",
           background: "#FFFFFF",
-          clipPath: "polygon(0 0, 100% 0, 80% 100%, 0 100%)",
+          clipPath: "polygon(0 0, 100% 0, 75% 100%, 0 100%)",
         }}
       />
 
@@ -33,7 +33,7 @@ const TemplateGeoBold = ({ data, text }: Props) => {
         className="absolute left-0 top-0"
         style={{
           width: "55%",
-          height: "52%",
+          height: "55%",
           background: "#F5C518",
           clipPath: "polygon(0 0, 100% 0, 70% 100%, 0 100%)",
         }}
@@ -44,21 +44,21 @@ const TemplateGeoBold = ({ data, text }: Props) => {
         className="absolute right-0 top-0"
         style={{
           width: "55%",
-          height: "52%",
+          height: "55%",
           background: "#2d2d3a",
           clipPath: "polygon(30% 0, 100% 0, 100% 100%, 10% 100%)",
         }}
       />
 
-      {/* House-shaped image cutout */}
+      {/* House-shaped image cutout — larger */}
       <div
         className="absolute overflow-hidden"
         style={{
-          right: 60,
-          top: 80,
-          width: 440,
-          height: 500,
-          clipPath: "polygon(50% 0%, 100% 30%, 100% 100%, 0 100%, 0 30%)",
+          right: 40,
+          top: 60,
+          width: 520,
+          height: 600,
+          clipPath: "polygon(50% 0%, 100% 25%, 100% 100%, 0 100%, 0 25%)",
         }}
       >
         <img
@@ -70,10 +70,10 @@ const TemplateGeoBold = ({ data, text }: Props) => {
       </div>
 
       {/* Title text */}
-      <div className="absolute left-[50px] top-[60px] z-10 max-w-[420px]">
+      <div className="absolute left-[50px] top-[50px] z-10 max-w-[400px]">
         <h2
           style={{
-            fontSize: 62,
+            fontSize: 58,
             lineHeight: 1.05,
             color: "#1a1a2e",
             fontFamily: "'Inter', sans-serif",
@@ -83,13 +83,13 @@ const TemplateGeoBold = ({ data, text }: Props) => {
           {typeLabel === "SATILIK" ? "SATILIK\nEMLAK" : "KİRALIK\nEMLAK"}
         </h2>
         <p
-          style={{ fontSize: 16, color: "rgba(0,0,0,0.6)", lineHeight: 1.6, marginTop: 16 }}
+          style={{ fontSize: 16, color: "rgba(0,0,0,0.6)", lineHeight: 1.6, marginTop: 12 }}
         >
           {data.title} — {data.location}
         </p>
 
         {/* Call badge */}
-        <div className="mt-5">
+        <div className="mt-4">
           <span
             style={{
               fontSize: 12,
@@ -111,7 +111,7 @@ const TemplateGeoBold = ({ data, text }: Props) => {
       </div>
 
       {/* Dots decoration */}
-      <div className="absolute left-[50px] top-[520px] z-10">
+      <div className="absolute left-[50px] z-10" style={{ top: 480 }}>
         <div className="grid grid-cols-4 gap-2">
           {Array.from({ length: 16 }).map((_, i) => (
             <div
@@ -127,16 +127,15 @@ const TemplateGeoBold = ({ data, text }: Props) => {
         </div>
       </div>
 
-      {/* Price banner */}
+      {/* Price banner — moved up */}
       <div
         className="absolute left-0 right-0 z-10"
-        style={{ bottom: 180 }}
+        style={{ bottom: 160 }}
       >
-        {/* Yellow price bar */}
         <div
           style={{
             background: "#F5C518",
-            padding: "16px 50px",
+            padding: "14px 50px",
             display: "inline-block",
           }}
         >
@@ -147,7 +146,7 @@ const TemplateGeoBold = ({ data, text }: Props) => {
         <div
           style={{
             background: "#E53E3E",
-            padding: "16px 50px",
+            padding: "14px 50px",
             display: "inline-block",
             marginLeft: -4,
           }}
