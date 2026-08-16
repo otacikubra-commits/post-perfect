@@ -29,7 +29,11 @@ export const templateRegistry: Record<string, AnyTemplate> = {
   t11: BusinessCardBlueDiagonal,
 };
 
-const SAMPLE_IMAGE = "/placeholder.svg";
+const SAMPLE_IMAGE =
+  "data:image/svg+xml;utf8," +
+  encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#9aa5b1"/><stop offset="100%" stop-color="#4b5563"/></linearGradient></defs><rect width="800" height="800" fill="url(#g)"/><g fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="18"><path d="M250 420 L400 300 L550 420"/><rect x="300" y="420" width="200" height="150"/></g></svg>`,
+  );
 
 export const sampleProperty: PropertyData = {
   title: "Deniz Manzaralı 3+1 Daire",
